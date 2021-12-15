@@ -10,8 +10,8 @@ function App() {
   const darkMode = theme.state.darkMode;
 
   return (
-    <div className={`bg ${darkMode ? "bg-dark" : "bg-light"}`}>
-      <p className={`para ${darkMode ? "para-dark" : "para-light"}`}>
+    <div className={`bg ${darkMode ? "bg-dark" : "bg-light"}`}><h1 >Jeu du pendu</h1>
+      <p className={`para ${darkMode ? "para-dark" : "para-light"}`}> 
       <SwitchButton />
         <CallApi/>
      <Classement/>
