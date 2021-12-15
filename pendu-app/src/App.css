@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  padding-left: 20%;
 }
 
 .App-logo {
@@ -37,11 +38,11 @@
   }
 }
 .bg {
-  padding-right: 50px;
-  padding-left: 50px;
-
+  justify-content: center;
+  text-align: center;
   overflow: hidden;
   transition: 0.2s all linear;
+  padding: 10%;
 }
 
 .heading {
@@ -104,4 +105,8 @@
   background-color: #fff;
   color: #222;
 
+}
+
+.img-avatar{
+  width: 20px;
 }

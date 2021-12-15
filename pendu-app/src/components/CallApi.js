@@ -4,8 +4,9 @@ import {includes, map} from "lodash" ;
 
 let GOOD_LETTER = "azertyuiopqsdfghjklmwxcvbnAZERTYUIOPQSDFGHJKLMWXCVBNéàè";
 function CallApi (){
+
+
 const[data, setData] = useState([]);
-//similairre a componentDidMount et componentDidUpdate
 useEffect(() => {
   const fetchData = async () => {
     const result = await axios(

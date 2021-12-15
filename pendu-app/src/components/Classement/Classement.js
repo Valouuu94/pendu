@@ -23,7 +23,7 @@ function Classement() {
         <React.Fragment>
             {map(datas, (data) => (
             map(data, (score) => (
-                <p>{score.username} : {score.score}</p>
+                <p>{score.username}: <img class ="img-avatar"src={score.avatar}></img> : {score.score}</p>
             ))
 
             ))}
