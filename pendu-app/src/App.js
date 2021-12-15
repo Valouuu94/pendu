@@ -4,18 +4,16 @@ import CallApi from './components/CallApi';
 import SwitchButton from "./components/Button";
 import Classement from "./components/Classement/Classement";
 import './App.css';
-import Wordcount from "./components/Wordcount";
 
 function App() {
   const theme = useContext(ThemeContext);
   const darkMode = theme.state.darkMode;
+
   return (
     <div className={`bg ${darkMode ? "bg-dark" : "bg-light"}`}>
       <p className={`para ${darkMode ? "para-dark" : "para-light"}`}>
       <SwitchButton />
-      {/* <Wordcount/> */}
         <CallApi/>
-    
      <Classement/>
      </p>
   </div>

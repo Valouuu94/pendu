@@ -1,52 +1,49 @@
-import React, {useEffect, useState} from 'react'
-import axios from 'axios';
-import {includes, map} from "lodash" ;
+import React, { useEffect, useState } from 'react'
+import CurrentWord from './CurrentWord';
+const GOOD_LETTER = "azertyuiopqsdfghjklmwxcvbnAZERTYUIOPQSDFGHJKLMWXCVBNéàâêè";
+function CallApi() {
+    const [usedLetter, setUsedLetter] = useState("");
+    const [word, setWord] = useState(undefined);
+    useEffect(()=> {
+        (async() => {
+            const { data } = await getWord();
+            setWord(data);
+            console.log(data);
+        })();
+        return () => {};
+    }, []
+    );
 
-let GOOD_LETTER = "azertyuiopqsdfghjklmwxcvbnAZERTYUIOPQSDFGHJKLMWXCVBNéàè";
-function CallApi (){
-
-
-const[data, setData] = useState([]);
-useEffect(() => {
-  const fetchData = async () => {
-    const result = await axios(
-      'https://animalfinderapi.herokuapp.com/word',
-);
-setData(result.data);
-console.log(result.data);
+const handleKeyDown = (event) => {
+    if(GOOD_LETTER.includes(event.key)) {
+        console.log("A key was pressed", event.key);
     }
-    fetchData();
-  }, [])
-  const handleKeyDown = (event) => {
-    if(GOOD_LETTER.includes(event.key)){
-      console.log('A key was pressed', event.key);
-    }
-  };
-  useEffect(() => {
+};
 
-    window.addEventListener('keydown', handleKeyDown);
-
-
-    // cleanup this component
-
+useEffect(()=> {
+    window.addEventListener("keydown", handleKeyDown, false);
     return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-
+        window.removeEventListener("keydown", handleKeyDown);
     };
+}, []);
 
-  }, []);
+const getWord = async () => {
+    const dataJson = await fetch('https://animalfinderapi.herokuapp.com/word');
+    return await dataJson.json();
+};
+
+
+
+if(!word){
+    return <p>Waiting...</p>
+}
 
 return (
-  <div className="App">
-    <h1> Jeux du Pendu</h1>
-    <ul>
-      {map(data, animal => (
-        <React.Fragment key={animal.id}>
-          <p>{animal.word}</p> 
-        </React.Fragment>
-      ))}
-    </ul>
-  </div>
-);
-      }
-export default CallApi ;
+    <div>
+        <CurrentWord currentWord={word.word} usedLetter={usedLetter} />
+
+    </div>
+)
+
+}
+export default CallApi 
