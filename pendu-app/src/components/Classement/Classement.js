@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, {useEffect, useState} from 'react'
 import { map } from 'lodash';
+import './Classement.css'
 
 function Classement() {
     const [datas, setDatas] = useState([]);
@@ -8,7 +9,7 @@ function Classement() {
     useEffect(() => {
         const fetchData = async () => {
             const result = await axios(
-                'https://animalfinderapi.herokuapp.come/score',
+                'https://animalfinderapi.herokuapp.com/score',
             );
             setDatas(result.data);
             console.log(result.data)
@@ -17,6 +18,8 @@ function Classement() {
     }, [])
 
     return (
+        <div class="classement"> 
+        <h2>Classement des meilleurs joueurs</h2>
         <React.Fragment>
             {map(datas, (data) => (
             map(data, (score) => (
@@ -25,6 +28,7 @@ function Classement() {
 
             ))}
         </React.Fragment>
+        </div>
         
     )
 }

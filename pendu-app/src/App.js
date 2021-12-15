@@ -11,8 +11,9 @@ function App() {
   return (
     <div className={`bg ${darkMode ? "bg-dark" : "bg-light"}`}>
       <p className={`para ${darkMode ? "para-dark" : "para-light"}`}>
+      <SwitchButton />
         <CallApi/>
-     <SwitchButton />
+    
      <Classement/>
      </p>
   </div>

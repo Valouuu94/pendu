@@ -1,0 +1,7 @@
+.classement {
+    background: pink;
+    width: 100%;
+    text-align: center;
+    height: 100%;overflow-y: scroll;
+
+}
